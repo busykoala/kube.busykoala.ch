@@ -1,0 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-istio
+  namespace: cert-manager
+spec:
+  acme:
+    email: info@busykoala.ch
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+      # https://cert-manager.io/docs/configuration/acme/dns01/cloudflare/
+      - dns01:
+          cloudflare:
+            email: m@osswald.li
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token

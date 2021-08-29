@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: istio-certs
+  namespace: istio-system
+spec:
+  secretName: istio-certs
+  issuerRef:
+    name: letsencrypt-istio
+    kind: ClusterIssuer
+  commonName: '*.kube.busykoala.ch'
+  dnsNames:
+  - 'kube.busykoala.ch'
+  - '*.kube.busykoala.ch'
