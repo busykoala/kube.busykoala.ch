@@ -13,6 +13,7 @@ spec:
       protocol: HTTP
     hosts:
     - one.kube.busykoala.ch
+    - two.kube.busykoala.ch
     tls:
       httpsRedirect: true
   - port:
@@ -21,6 +22,7 @@ spec:
       protocol: HTTPS
     hosts:
     - one.kube.busykoala.ch
+    - two.kube.busykoala.ch
     tls:
       mode: SIMPLE
       credentialName: istio-certs

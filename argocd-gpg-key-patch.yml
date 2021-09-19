@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-repo-server
+spec:
+  template:
+    spec:
+      volumes:
+      - configMap:
+        name: gpg-keys
+        projected:
+          sources:
+          - secret:
+              name: argocd-gpg-keys-secret
+          - configMap:
+              name: argocd-gpg-keys-cm

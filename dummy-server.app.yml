@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dummy-server-app
+  namespace: argocd
+spec:
+  project: dummy-project
+  source:
+    repoURL: https://github.com/busykoala/dummy-server-chart.git
+    targetRevision: "master"
+    path: "."
+    helm:
+      values: |
+        namespace: dummy-server
+        imagePullPolicy: IfNotPresent
+        vsHost: two.kube.busykoala.ch
+        vsGateway: istio-system/default-gateway
+        images:
+          dummy_server:
+            name: busykoala/dummy_server
+            tag: latest
+            port: 8000
+      # valueFiles:
+      # - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dummy-server
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

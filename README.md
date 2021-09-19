@@ -77,3 +77,10 @@ The gateway can be used by `Virtualservices` (captain.virtualservices.yml`).
 The `VirtualService` includes rules which requests are routed to a service (e.g. route matching).
 
 Furthermore there is a helloworld service and the deployments available in the repo.
+
+## Setup ArgoCD with git-crypt
+
+Checkout [argo-git-crypt](https://github.com/busykoala/argo-git-crypt) for the
+ArgoCD setup including git-crypt.
+
+Additionally to that there is now a dummy service chart deployed (`dummy-server.*`).
